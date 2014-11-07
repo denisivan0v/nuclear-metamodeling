@@ -2,7 +2,7 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{963E3CCA-77DA-4DA0-A08B-1482E0177CD1}</ProjectGuid>
@@ -13,8 +13,10 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile151</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\2GIS.NuClear.Metamodeling.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,14 +35,86 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\2GIS.NuClear.Metamodeling.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Elements\Aspects\Conditions\ICondition.cs" />
+    <Compile Include="Elements\Aspects\Conditions\StringConditionCondition.cs" />
+    <Compile Include="Elements\Aspects\Features\Handler\IHandlerBoundElement.cs" />
+    <Compile Include="Elements\Aspects\Features\Handler\IHandlerFeature.cs" />
+    <Compile Include="Elements\Aspects\Features\IMetadataFeature.cs" />
+    <Compile Include="Elements\Aspects\Features\IUniqueMetadataFeature.cs" />
+    <Compile Include="Elements\Aspects\Features\Mode\ISharable.cs" />
+    <Compile Include="Elements\Aspects\Features\Mode\SharedFeature.cs" />
+    <Compile Include="Elements\Aspects\Features\Mode\SharedFeatureAspect.cs" />
+    <Compile Include="Elements\Aspects\Features\Operations\IOperationsBoundElement.cs" />
+    <Compile Include="Elements\Aspects\Features\Operations\OperationFeature.cs" />
+    <Compile Include="Elements\Aspects\Features\Operations\OperationsSetFeature.cs" />
+    <Compile Include="Elements\Aspects\Features\Resources\Images\IImageBoundElement.cs" />
+    <Compile Include="Elements\Aspects\Features\Resources\Images\IImageDescriptor.cs" />
+    <Compile Include="Elements\Aspects\Features\Resources\Images\ImageFeature.cs" />
+    <Compile Include="Elements\Aspects\Features\Resources\Images\ImageFeatureAspect.cs" />
+    <Compile Include="Elements\Aspects\Features\Resources\Images\ResourceImageDescriptor.cs" />
+    <Compile Include="Elements\Aspects\Features\Resources\Images\StaticPathImageDescriptor.cs" />
+    <Compile Include="Elements\Aspects\Features\Resources\IResourceDescriptor.cs" />
+    <Compile Include="Elements\Aspects\Features\Resources\Titles\ITitledElement.cs" />
+    <Compile Include="Elements\Aspects\Features\Resources\Titles\ITitleDescriptor.cs" />
+    <Compile Include="Elements\Aspects\Features\Resources\Titles\ResourceTitleDescriptor.cs" />
+    <Compile Include="Elements\Aspects\Features\Resources\Titles\StaticTitleDescriptor.cs" />
+    <Compile Include="Elements\Aspects\Features\Resources\Titles\TitleFeature.cs" />
+    <Compile Include="Elements\Aspects\Features\Resources\Titles\TitleFeatureAspect.cs" />
+    <Compile Include="Elements\Aspects\Identities\IdentifiableAspect.cs" />
+    <Compile Include="Elements\Identities\Concrete\MetadataElementIdentity.cs" />
+    <Compile Include="Elements\Identities\IdBuilder.cs" />
+    <Compile Include="Elements\Identities\IMetadataElementIdentity.cs" />
+    <Compile Include="Elements\IMetadataElement.cs" />
+    <Compile Include="Elements\IMetadataElementAspect.cs" />
+    <Compile Include="Elements\IMetadataElementUpdater.cs" />
+    <Compile Include="Elements\MetadataElement.cs" />
+    <Compile Include="Elements\MetadataElementBuilder.cs" />
+    <Compile Include="Elements\MetadataElementBuilderAspectBase.cs" />
+    <Compile Include="Elements\MetadataElementUtils.cs" />
+    <Compile Include="Elements\MetadataReference.cs" />
+    <Compile Include="Elements\MetadataReferenceBuilder.cs" />
+    <Compile Include="Entities\EntityPropertyMetadata.cs" />
+    <Compile Include="Entities\ErrorDescription.cs" />
+    <Compile Include="Entities\IDataFieldFeature.cs" />
+    <Compile Include="Entities\IPropertyFeature.cs" />
+    <Compile Include="Entities\IValidatablePropertyFeature.cs" />
+    <Compile Include="Entities\MetadataEntitiesIdentity.cs" />
+    <Compile Include="Kinds\IMetadataKindIdentity.cs" />
+    <Compile Include="Kinds\MetadataKindIdentityBase.cs" />
+    <Compile Include="Prerequisites\PrerequisitesAttribute.cs" />
+    <Compile Include="Prerequisites\СonsideringPrerequisitesComparer.cs" />
+    <Compile Include="Processors\Concrete\Feature2PropertiesLinkerProcessor.cs" />
+    <Compile Include="Processors\Concrete\ReferencesEvaluatorProcessor.cs" />
+    <Compile Include="Processors\IMetadataProcessor.cs" />
+    <Compile Include="Processors\MetadataProcessorBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provider\IMetadataProvider.cs" />
+    <Compile Include="Provider\MetadataProvider.cs" />
+    <Compile Include="Provider\MetadataProviderUtils.cs" />
+    <Compile Include="Provider\MetadataSet.cs" />
+    <Compile Include="Provider\Sources\IMetadataSource.cs" />
+    <Compile Include="Provider\Sources\MetadataExtractorUtils.cs" />
+    <Compile Include="Provider\Sources\MetadataSourceBase.cs" />
+    <Compile Include="Utils\IncreasingSequenceGenerator.cs" />
+    <Compile Include="Utils\IOperationIdentity.cs" />
+    <Compile Include="Utils\Resources\ResourceEntryKey.cs" />
+    <Compile Include="Utils\StaticReflection.cs" />
+    <Compile Include="Validators\IMetadataValidator.cs" />
+    <Compile Include="Validators\IMetadataValidatorsSuite.cs" />
+    <Compile Include="Validators\MetadataValidatorBase.cs" />
+    <Compile Include="Validators\MetadataValidatorsSuite.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Elements\Aspects\Features\Resources\Titles\Titles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="2GIS.NuClear.Model.Common">
+      <HintPath>..\packages\2GIS.NuClear.Model.Common.1.0.1\lib\portable-net451+win81+wpa81\2GIS.NuClear.Model.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
