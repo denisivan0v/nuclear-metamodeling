@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using NuClear.Metamodeling.Elements;
+using NuClear.Metamodeling.Elements.Concrete.References;
 using NuClear.Metamodeling.Kinds;
 using NuClear.Metamodeling.Provider;
 
