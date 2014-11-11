@@ -6,6 +6,8 @@ using System.Text.RegularExpressions;
 using NuClear.Metamodeling.Elements.Identities.Concrete;
 using NuClear.Metamodeling.Kinds;
 using NuClear.Metamodeling.Utils;
+using NuClear.Model.Common.Entities;
+using NuClear.Model.Common.Entities.Aspects;
 using NuClear.Model.Common.Operations.Identity;
 
 namespace NuClear.Metamodeling.Elements.Identities
@@ -102,7 +104,6 @@ namespace NuClear.Metamodeling.Elements.Identities
             return metadataKindIdentity.Id.AbsoluteUri.ToId(operation.AsUriSegment());
         }
 
-        /*
         public static Uri IdFor<TEntity>(this IMetadataKindIdentity metadataKindIdentity)
             where TEntity : class, IEntity
         {
@@ -114,7 +115,7 @@ namespace NuClear.Metamodeling.Elements.Identities
 
             return metadataKindIdentity.Id.AbsoluteUri.ToId(entityName.ToString());
         }
-        */
+        
 
         public static IMetadataElementIdentity AsIdentity(this Uri uri)
         {

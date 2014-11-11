@@ -5,7 +5,7 @@ using NuClear.Metamodeling.Elements.Aspects.Conditions;
 using NuClear.Metamodeling.Elements.Aspects.Features;
 using NuClear.Metamodeling.Elements.Identities;
 
-namespace NuClear.Metamodeling.Elements
+namespace NuClear.Metamodeling.Elements.Concrete.References
 {
     public sealed class MetadataReference : MetadataElement<MetadataReference, MetadataReferenceBuilder>
     {

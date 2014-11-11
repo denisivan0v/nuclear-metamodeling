@@ -13,7 +13,7 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile151</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Profile32</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\2GIS.NuClear.Metamodeling.snk</AssemblyOriginatorKeyFile>
@@ -38,6 +38,9 @@
   <ItemGroup>
     <Compile Include="Elements\Aspects\Conditions\ICondition.cs" />
     <Compile Include="Elements\Aspects\Conditions\StringConditionCondition.cs" />
+    <Compile Include="Elements\Aspects\Features\Entities\RelatedEntityFeature.cs" />
+    <Compile Include="Elements\Aspects\Features\Handler\Concrete\ShowGridHandlerFeature.cs" />
+    <Compile Include="Elements\Aspects\Features\Handler\HandlerFeatureAspect.cs" />
     <Compile Include="Elements\Aspects\Features\Handler\IHandlerBoundElement.cs" />
     <Compile Include="Elements\Aspects\Features\Handler\IHandlerFeature.cs" />
     <Compile Include="Elements\Aspects\Features\IMetadataFeature.cs" />
@@ -47,7 +50,9 @@
     <Compile Include="Elements\Aspects\Features\Mode\SharedFeatureAspect.cs" />
     <Compile Include="Elements\Aspects\Features\Operations\IOperationsBoundElement.cs" />
     <Compile Include="Elements\Aspects\Features\Operations\OperationFeature.cs" />
+    <Compile Include="Elements\Aspects\Features\Operations\OperationFeatureAspect.cs" />
     <Compile Include="Elements\Aspects\Features\Operations\OperationsSetFeature.cs" />
+    <Compile Include="Elements\Aspects\Features\Operations\OperatiosFeatureUtils.cs" />
     <Compile Include="Elements\Aspects\Features\Resources\Images\IImageBoundElement.cs" />
     <Compile Include="Elements\Aspects\Features\Resources\Images\IImageDescriptor.cs" />
     <Compile Include="Elements\Aspects\Features\Resources\Images\ImageFeature.cs" />
@@ -62,6 +67,10 @@
     <Compile Include="Elements\Aspects\Features\Resources\Titles\TitleFeature.cs" />
     <Compile Include="Elements\Aspects\Features\Resources\Titles\TitleFeatureAspect.cs" />
     <Compile Include="Elements\Aspects\Identities\IdentifiableAspect.cs" />
+    <Compile Include="Elements\Concrete\Hierarchy\HierarchyMetadata.cs" />
+    <Compile Include="Elements\Concrete\Hierarchy\HierarchyMetadataBuilder.cs" />
+    <Compile Include="Elements\Concrete\References\MetadataReference.cs" />
+    <Compile Include="Elements\Concrete\References\MetadataReferenceBuilder.cs" />
     <Compile Include="Elements\Identities\Concrete\MetadataElementIdentity.cs" />
     <Compile Include="Elements\Identities\IdBuilder.cs" />
     <Compile Include="Elements\Identities\IMetadataElementIdentity.cs" />
@@ -72,8 +81,6 @@
     <Compile Include="Elements\MetadataElementBuilder.cs" />
     <Compile Include="Elements\MetadataElementBuilderAspectBase.cs" />
     <Compile Include="Elements\MetadataElementUtils.cs" />
-    <Compile Include="Elements\MetadataReference.cs" />
-    <Compile Include="Elements\MetadataReferenceBuilder.cs" />
     <Compile Include="Entities\EntityPropertyMetadata.cs" />
     <Compile Include="Entities\ErrorDescription.cs" />
     <Compile Include="Entities\IDataFieldFeature.cs" />
@@ -82,6 +89,24 @@
     <Compile Include="Entities\MetadataEntitiesIdentity.cs" />
     <Compile Include="Kinds\IMetadataKindIdentity.cs" />
     <Compile Include="Kinds\MetadataKindIdentityBase.cs" />
+    <Compile Include="Operations\Detail\Concrete\ActionHistoryMetadata.cs" />
+    <Compile Include="Operations\Detail\Concrete\ActivateMetadata.cs" />
+    <Compile Include="Operations\Detail\Concrete\AppendMetadata.cs" />
+    <Compile Include="Operations\Detail\Concrete\AssignMetadata.cs" />
+    <Compile Include="Operations\Detail\Concrete\ChangeClientMetadata.cs" />
+    <Compile Include="Operations\Detail\Concrete\ChangeTerritoryMetadata.cs" />
+    <Compile Include="Operations\Detail\Concrete\CheckForDebtsMetadata.cs" />
+    <Compile Include="Operations\Detail\Concrete\DeactivateMetadata.cs" />
+    <Compile Include="Operations\Detail\Concrete\DeleteMetadata.cs" />
+    <Compile Include="Operations\Detail\Concrete\DisqualifyMetadata.cs" />
+    <Compile Include="Operations\Detail\Concrete\DownloadFileMetadata.cs" />
+    <Compile Include="Operations\Detail\Concrete\ModifyBusinessModelEntityMetadata.cs" />
+    <Compile Include="Operations\Detail\Concrete\ModifySimplifiedModelEntityMetadata.cs" />
+    <Compile Include="Operations\Detail\Concrete\QualifyMetadata.cs" />
+    <Compile Include="Operations\Detail\Concrete\UploadFileMetadata.cs" />
+    <Compile Include="Operations\Detail\EmptyOperationMetadata.cs" />
+    <Compile Include="Operations\Detail\IOperationMetadata.cs" />
+    <Compile Include="Operations\Detail\OperationMetadataDetailContainer.cs" />
     <Compile Include="Prerequisites\PrerequisitesAttribute.cs" />
     <Compile Include="Prerequisites\СonsideringPrerequisitesComparer.cs" />
     <Compile Include="Processors\Concrete\Feature2PropertiesLinkerProcessor.cs" />
@@ -97,7 +122,6 @@
     <Compile Include="Provider\Sources\MetadataExtractorUtils.cs" />
     <Compile Include="Provider\Sources\MetadataSourceBase.cs" />
     <Compile Include="Utils\IncreasingSequenceGenerator.cs" />
-    <Compile Include="Utils\IOperationIdentity.cs" />
     <Compile Include="Utils\Resources\ResourceEntryKey.cs" />
     <Compile Include="Utils\StaticReflection.cs" />
     <Compile Include="Validators\IMetadataValidator.cs" />
@@ -109,8 +133,12 @@
     <Folder Include="Elements\Aspects\Features\Resources\Titles\Titles\" />
   </ItemGroup>
   <ItemGroup>
+    <TargetPlatform Include="Windows, Version=8.1" />
+    <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="2GIS.NuClear.Model.Common">
-      <HintPath>..\packages\2GIS.NuClear.Model.Common.1.0.0\lib\portable-net451+win81+wpa81\2GIS.NuClear.Model.Common.dll</HintPath>
+      <HintPath>..\packages\2GIS.NuClear.Model.Common.1.0.1\lib\portable-win81+wpa81\2GIS.NuClear.Model.Common.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

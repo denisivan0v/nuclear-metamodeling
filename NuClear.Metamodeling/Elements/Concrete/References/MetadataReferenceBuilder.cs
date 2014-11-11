@@ -2,7 +2,7 @@ using System;
 
 using NuClear.Metamodeling.Elements.Aspects.Conditions;
 
-namespace NuClear.Metamodeling.Elements
+namespace NuClear.Metamodeling.Elements.Concrete.References
 {
     public sealed class MetadataReferenceBuilder : MetadataElementBuilder<MetadataReferenceBuilder, MetadataReference>
     {
