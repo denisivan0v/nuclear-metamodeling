@@ -13,7 +13,7 @@ namespace NuClear.Metamodeling.Elements.Aspects.Features.Operations
         {
         }
 
-        public TBuilder SpecificFor<TOperationIdentity>(params EntityType[] operationEntities)
+        public TBuilder SpecificFor<TOperationIdentity>(params IEntityType[] operationEntities)
             where TOperationIdentity : OperationIdentityBase<TOperationIdentity>, IEntitySpecificOperationIdentity, new()
         {
             return AspectHostBuilder.AddEntitySpecificOperation<TBuilder, TMetadataElement, TOperationIdentity>(operationEntities);

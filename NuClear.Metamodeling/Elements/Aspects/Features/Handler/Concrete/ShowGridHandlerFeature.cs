@@ -4,14 +4,14 @@ namespace NuClear.Metamodeling.Elements.Aspects.Features.Handler.Concrete
 {
     public sealed class ShowGridHandlerFeature : IHandlerFeature
     {
-        private readonly EntityType _entityName;
+        private readonly IEntityType _entityName;
 
-        public ShowGridHandlerFeature(EntityType entityName)
+        public ShowGridHandlerFeature(IEntityType entityName)
         {
             _entityName = entityName;
         }
 
-        public EntityType EntityName
+        public IEntityType EntityName
         {
             get
             {

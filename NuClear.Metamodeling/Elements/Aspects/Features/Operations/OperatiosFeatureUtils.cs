@@ -23,7 +23,7 @@ namespace NuClear.Metamodeling.Elements.Aspects.Features.Operations
             return builder;
         }
 
-        public static TBuilder AddEntitySpecificOperation<TBuilder, TMetadataElement, TOperationIdentity>(this TBuilder builder, params EntityType[] operationEntities)
+        public static TBuilder AddEntitySpecificOperation<TBuilder, TMetadataElement, TOperationIdentity>(this TBuilder builder, params IEntityType[] operationEntities)
             where TBuilder : MetadataElementBuilder<TBuilder, TMetadataElement>, new()
             where TMetadataElement : MetadataElement
             where TOperationIdentity : OperationIdentityBase<TOperationIdentity>, IEntitySpecificOperationIdentity, new()

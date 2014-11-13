@@ -21,7 +21,7 @@ namespace NuClear.Metamodeling.Elements.Aspects.Features.Handler
             return AspectHostBuilder;
         }
 
-        public TBuilder ShowGridByConvention(EntityType entityName, string filterExpression, string disableExpression)
+        public TBuilder ShowGridByConvention(IEntityType entityName, string filterExpression, string disableExpression)
         {
             AspectHostBuilder.WithFeatures(new ShowGridHandlerFeature(entityName)
                 {
