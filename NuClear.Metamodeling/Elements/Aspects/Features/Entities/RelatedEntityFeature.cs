@@ -4,14 +4,14 @@ namespace NuClear.Metamodeling.Elements.Aspects.Features.Entities
 {
     public sealed class RelatedEntityFeature : IUniqueMetadataFeature
     {
-        private readonly EntityType _entity;
+        private readonly IEntityType _entity;
 
-        public RelatedEntityFeature(EntityType entity)
+        public RelatedEntityFeature(IEntityType entity)
         {
             _entity = entity;
         }
 
-        public EntityType Entity
+        public IEntityType Entity
         {
             get { return _entity; }
         }
